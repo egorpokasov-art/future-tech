@@ -1,0 +1,31 @@
+@use "../helpers" as *;
+
+.table-of-contents {
+  padding: rem(20);
+  max-width: rem(440);
+  width: 100%;
+
+  @include laptop {
+    padding: rem(18);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(20);
+
+    @include laptop {
+      row-gap: rem(16);
+    }
+  }
+
+  &__item {
+    list-style-type: disc;
+    color: var(--color-light);
+    margin-left: 1.7rem;
+
+    @include mobile {
+      margin-left: 1rem;
+    }
+  }
+}

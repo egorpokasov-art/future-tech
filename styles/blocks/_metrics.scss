@@ -1,0 +1,92 @@
+@use "../helpers" as *;
+
+.metrics {
+  --columns: 3;
+  --itemPaddingX: #{fluid(50, 15)};
+  --columnGap: calc(var(--itemPaddingX) * 2);
+
+  &--4-cols {
+    --columns: 4;
+
+    border-block: none;
+
+    @include tablet {
+      --columns: 2;
+
+      padding-inline: 0;
+
+      .metrics__item {
+        padding-inline: var(--container-padding-x);
+
+        &:is(:first-child, :last-child) {
+          padding-inline: var(--container-padding-x);
+        }
+
+        @include tablet {
+          &:nth-child(-n + 2) {
+            @include full-vw-centered-line(bottom)
+          }
+        }
+      }
+    }
+  }
+
+  &.is-animated {
+    .metrics__item-wrapper {
+      animation: fade-in-left var(--animationDuration-l) ease both;
+    }
+  }
+
+  &__list {
+    --metricsItemOverflow: visible;
+
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: repeat(var(--columns), 1fr);
+    column-gap: var(--columnGap);
+
+    &:has(.metrics__wrapper) {
+      --metricsItemOverflow: hidden;
+    }
+  }
+
+  &__wrapper,
+  &__item {
+    position: relative;
+
+    &:not(:last-child) {
+      @include side-line(right, var(--itemPaddingX))
+    }
+  }
+
+  &__wrapper {
+    overflow: visible;
+  }
+
+  &__item {
+    overflow: var(--metricsItemOverflow);
+    justify-content: start;
+    padding-block: fluid(50, 20);
+
+    &,
+    &-wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: start;
+    }
+  }
+
+  &__value {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    column-gap: rem(2);
+    font-weight: 600;
+  }
+
+  &__sign {
+    text-box: trim-both cap alphabetic;
+    color: var(--color-accent);
+    font-size: inherit;
+  }
+}

@@ -1,0 +1,236 @@
+@use "../helpers" as *;
+
+.hero {
+  border-block: var(--border);
+
+  &__main {
+    @include tablet-above {
+      display: grid;
+      grid-template-columns: 60% auto;
+      grid-template-areas:
+      'body resources-preview'
+      'metrics resources-preview'
+      ;
+    }
+  }
+
+  &__body {
+    overflow: hidden;
+    grid-area: body;
+    padding-block: rem(150) rem(100);
+    padding-right: rem(50);
+
+    @include laptop {
+      padding-block: rem(100);
+      padding-right: rem(40);
+    }
+
+    @include desktop {
+      padding-block: rem(60);
+    }
+
+    @include mobile {
+      padding-block: rem(40) rem(30);
+      padding-right: rem(0);
+    }
+
+    &.is-animated {
+      @include mobile-above {
+        animation: fade-in-right var(--animationDuration-l) ease;
+      }
+
+      @include mobile {
+        animation: fade-in-top var(--animationDuration-l) ease;
+      }
+
+      .hero__title {
+        color: var(--color-light);
+      }
+    }
+  }
+
+  &__subtitle {
+    @include fluid-text(30, 18);
+
+    font-family: var(--font-family-accent);
+    font-weight: 500;
+    color: var(--color-dark-40);
+
+    &:not(:last-child) {
+      margin-bottom: rem(30);
+
+      @include laptop {
+        margin-bottom: rem(20);
+      }
+
+      @include mobile {
+        margin-bottom: rem(16);
+      }
+    }
+  }
+
+  &__title {
+    color: var(--color-gray-60);
+    transition-duration: var(--animationDuration-l);
+    transition-delay: var(--animationDelay);
+
+    &:not(:last-child) {
+      margin-bottom: rem(20);
+
+      @include laptop {
+        margin-bottom: rem(14);
+      }
+    }
+  }
+
+  &__metrics {
+    position: relative;
+    grid-area: metrics;
+
+    @include tablet-above {
+      border-top: var(--border);
+      border-bottom: none;
+    }
+
+    @include tablet {
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100vw;
+        left: 50%;
+        translate: -50%;
+        height: 1px;
+        background-color: var(--color-dark-15);
+      }
+
+      &::before {
+        bottom: 100%;
+      }
+
+      &::after {
+        top: 100%;
+      }
+    }
+  }
+
+  &__resources-preview {
+    z-index: 10;
+    grid-area: resources-preview;
+    background-image: url("../images-optimized/resources-preview/img.webp");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 0 rem(1);
+
+    @include laptop {
+      background-size: 422px auto;
+    }
+
+    @include tablet-above {
+      border-left: var(--border);
+    }
+
+    @include tablet {
+      margin-inline: calc(var(--container-padding-x) * -1);
+    }
+
+    @include mobile {
+      background-size: 268px auto;
+    }
+
+    &.is-animated {
+      .resources-preview__wrapper {
+        @include mobile-above {
+          animation: fade-in-bottom var(--animationDuration-xl) ease;
+        }
+
+        @include mobile {
+          animation: fade-in-left var(--animationDuration-xl) ease;
+        }
+      }
+    }
+  }
+
+  &__advantages {
+    overflow: hidden;
+    border-block: var(--border);
+
+    &-list {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+
+      @include tablet {
+        grid-template-columns: 1fr;
+      }
+
+      &.is-animated {
+        .hero__advantages-item .advantage-card {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .hero__advantages-item:nth-child(2) .advantage-card {
+          transition-delay: 0.2s;
+        }
+
+        .hero__advantages-item:nth-child(3) .advantage-card {
+          transition-delay: 0.4s;
+        }
+      }
+    }
+
+    &-item {
+      --paddingX: #{rem(80)};
+      --paddingY: #{rem(50)};
+
+      overflow: hidden;
+      display: flex;
+      padding-block: var(--paddingY);
+
+      @include laptop {
+        --paddingX: #{rem(50)};
+        --paddingY: #{rem(40)};
+      }
+
+      @include desktop {
+        --paddingY: #{rem(30)};
+      }
+
+      @include tablet {
+        --paddingX: #{rem(50)};
+        --paddingY: #{rem(40)};
+
+        max-width: 65%;
+        width: 100%;
+        margin-inline: auto;
+      }
+
+      @include mobile-s {
+        --paddingY: #{rem(30)};
+
+        max-width: none;
+        margin-inline: 0;
+      }
+
+      &:not(:first-child) {
+        padding-left: var(--paddingX);
+
+        @include tablet {
+          padding-left: 0;
+        }
+      }
+
+      &:not(:last-child) {
+        border-right: var(--border);
+        padding-right: var(--paddingX);
+
+        @include tablet {
+          border-right: none;
+          border-bottom: var(--border);
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}

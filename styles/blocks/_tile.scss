@@ -1,0 +1,32 @@
+@use "../helpers" as *;
+
+.tile {
+  padding: fluid(30, 20);
+  border: var(--border);
+  border-radius: var(--radius-12);
+  background-color: var(--color-dark-10);
+
+  @include laptop {
+    border-radius: var(--radius-10);
+  }
+
+  &--alt {
+    padding: rem(18) rem(30);
+
+    @include laptop {
+      padding: rem(14) rem(33);
+    }
+  }
+
+  &--small {
+    padding: rem(34);
+
+    @include laptop {
+      padding: rem(24);
+    }
+  }
+
+  &--big {
+    padding: fluid(40, 24);
+  }
+}

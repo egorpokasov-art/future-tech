@@ -1,0 +1,152 @@
+@use "helpers" as *;
+
+html {
+  scroll-behavior: smooth;
+
+  &.is-lock {
+    overflow: hidden;
+  }
+}
+
+body {
+  @include fluid-text(18, 14);
+
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  color: var(--colr-gray-60);
+  letter-spacing: -0.03em;
+  background-color: var(--color-dark);
+}
+
+main {
+  flex-grow: 1;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  color: var(--color-light);
+  font-weight: 500;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  font-family: var(--font-family-accent);
+}
+
+h1, .h1 {
+  @include fluid-text(70, 30);
+
+  line-height: 1.2;
+}
+
+h2, .h2 {
+  @include fluid-text(58, 28);
+
+  line-height: 1.3;
+}
+
+h3, .h3 {
+  @include fluid-text(40, 24);
+}
+
+h4, .h4 {
+  @include fluid-text(26, 18);
+}
+
+h5, .h5 {
+  @include fluid-text(24, 18);
+}
+
+h6, .h6 {
+  @include fluid-text(20, 16);
+}
+
+a,
+button,
+label,
+input,
+textarea,
+select,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+a {
+  color: inherit;
+
+  @include hover {
+    color: var(--color-accent);
+  }
+
+  &[class] {
+    text-decoration: none;
+  }
+}
+
+:focus-visible {
+  outline: var(--outline);
+  outline-offset: var(--outline-offset);
+  transition-duration: calc(var(--transition-duration) / 2);
+}
+
+input,
+textarea,
+select {
+  &:focus-visible {
+    outline: none;
+    border-color: var(--color-accent);
+  }
+}
+
+a,
+button {
+  &[aria-label] {
+    position: relative;
+
+    &::before {
+      @include square(rem(44));
+      @include abs-center;
+
+      content: '';
+    }
+  }
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+//input:-webkit-autofill,
+//input:-webkit-autofill:hover,
+//input:-webkit-autofill:focus,
+//input:-webkit-autofill:active,
+//input:autofill,
+//input:autofill:hover,
+//input:autofill:focus,
+//input:autofill:active {
+//  /* 1. Фиксируем размер шрифта (замените 16px на ваш размер) */
+//  font-size: 16px !important;
+//
+//  /* 2. Фиксируем семейство шрифта (чтобы браузер не подставлял свой) */
+//  font-family: inherit !important;
+//
+//  /* 3. Фиксируем жирность текста (если нужно) */
+//  font-weight: normal !important;
+//
+//  /* 4. Фиксируем межстрочный интервал (чтобы текст не "прыгал" по высоте) */
+//  line-height: normal !important;
+//
+//  /* 1. Перекрываем белый фон огромной внутренней тенью цвета вашего инпута */
+//  -webkit-box-shadow: 0 0 0 1000px #2b2b2b inset !important; /* Укажите ваш темный цвет */
+//  box-shadow: 0 0 0 1000px #2b2b2b inset !important;
+//
+//  /* 2. Задаем цвет текста внутри автозаполненного поля */
+//  -webkit-text-fill-color: #ffffff !important; /* Укажите цвет текста */
+//  caret-color: #ffffff !important;
+//}
+

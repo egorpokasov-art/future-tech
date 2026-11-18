@@ -1,0 +1,25 @@
+@use "../helpers" as *;
+
+.grid {
+  --columns: 1;
+
+  display: grid;
+  grid-template-columns: repeat(var(--columns), 1fr);
+  row-gap: fluid(30, 20);
+
+  &--2-cols {
+    --columns: 2;
+
+    gap: fluid(50, 20) fluid(50, 10);
+
+    @include mobile-s {
+      --columns: 1;
+    }
+  }
+
+  &__cell {
+    &--wide {
+      grid-column: -1 / 1;
+    }
+  }
+}

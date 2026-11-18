@@ -1,0 +1,61 @@
+@use "../helpers" as *;
+
+.resources-preview {
+  overflow: hidden;
+  display: flex;
+  justify-content: start;
+  align-items: flex-end;
+  background-color: var(--color-dark);
+
+  &__wrapper {
+    --padding: #{rem(80)};
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: end;
+    row-gap: rem(30);
+    padding-left: var(--padding);
+    padding-bottom: var(--padding);
+
+    @include laptop {
+      --padding: #{rem(50)};
+
+      row-gap: rem(20);
+    }
+
+    @include tablet {
+      --padding: #{rem(40)};
+
+      min-height: rem(358);
+      align-items: center;
+      text-align: center;
+      border-left: none;
+      padding-bottom: rem(40);
+      padding-inline: var(--padding);
+    }
+
+    @include mobile {
+      align-items: start;
+      text-align: left;
+    }
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(14);
+  }
+
+  &__button {
+    @include tablet {
+      max-width: rem(250);
+      width: 100%;
+    }
+
+    @include mobile-s {
+      max-width: none;
+    }
+  }
+}

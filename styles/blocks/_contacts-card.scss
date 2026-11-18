@@ -1,0 +1,59 @@
+@use "../helpers" as *;
+
+.contacts-card {
+  --paddingX: #{fluid(80, 0)};
+
+  @include full-vw-centered-line(bottom);
+
+  display: grid;
+  align-items: center;
+  column-gap: calc(var(--paddingX) * 2);
+
+  @include tablet {
+    --paddingX: 0;
+  }
+
+  @include tablet-above {
+    grid-template-columns:
+      clamp(#{rem(350)}, 31.3vw, #{rem(519)})
+      1fr;
+  }
+
+  @include tablet {
+    column-gap: 0;
+  }
+
+  &__preview,
+  &__body {
+    padding-block: fluid(80, 40);
+  }
+
+  &__preview {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    row-gap: fluid(50, 20);
+
+    @include tablet {
+      border-bottom: var(--border);
+    }
+
+    &-body {
+      display: flex;
+      flex-direction: column;
+      row-gap: fluid(30, 6);
+    }
+
+    &-title {
+      &--small {
+        @include fluid-text(40, 20);
+      }
+    }
+  }
+
+  &__body {
+    @include tablet-above {
+      @include side-line(left, var(--paddingX));
+    }
+  }
+}

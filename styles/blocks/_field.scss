@@ -1,0 +1,143 @@
+@use "../helpers" as *;
+
+.field {
+  --padding: #{rem(20)};
+
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(16);
+
+  @include laptop {
+    --padding: #{rem(16)};
+
+    row-gap: rem(12);
+  }
+
+  &--checkbox {
+    display: grid;
+    grid-template-columns: min-content auto;
+    align-items: center;
+    column-gap: rem(15);
+    color: var(--color-light);
+
+    @include mobile-s {
+      column-gap: rem(10);
+    }
+
+    .field__error {
+      grid-column: -1 / 1;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    column-gap: rem(16);
+
+    @include laptop {
+      column-gap: rem(12);
+    }
+  }
+
+  &__required-star {
+    color: var(--color-red);
+  }
+
+  &__label {
+    color: var(--color-light);
+    user-select: none;
+
+    @include mobile-s {
+      font-size: rem(16);
+    }
+  }
+
+  &__input {
+    width: 100%;
+    color: var(--color-light);
+    caret-color: currentColor;
+    height: var(--input-height);
+    border: var(--border);
+    border-radius: var(--radius-8);
+    background-color: var(--color-dark-10);
+    padding-inline: var(--padding);
+
+    &::placeholder {
+      color: var(--color-dark-40);
+    }
+
+    &::-webkit-scrollbar { ////
+      width: rem(5);
+      background-color: var(--color-dark-10);
+    }
+
+    &--textarea {
+      height: rem(163);
+      resize: none;
+      padding: var(--padding);
+
+      @include mobile {
+        height: rem(127);
+      }
+    }
+  }
+
+  &__checkbox {
+    --size: #{rem(28)};
+
+    @include square(var(--size));
+    @include flex-center;
+
+    flex-shrink: 0;
+    appearance: none;
+    border: var(--border);
+    border-radius: var(--radius-4);
+    background-color: var(--color-dark-10);
+    margin: 0;
+
+    @include laptop {
+      --size: #{rem(24)};
+    }
+
+    &:checked {
+      &::after {
+        content: '✔';
+        color: var(--color-accent);
+      }
+    }
+  }
+
+  &__error {
+    display: grid;
+    row-gap: rem(10);
+
+    &-span {
+      font-size: rem(15);
+      letter-spacing: 0.05em;
+      color: var(--color-red);
+      border: 1px solid var(--color-red);
+      border-radius: var(--radius-8);
+      padding: rem(11);
+      opacity: 0.9;
+
+      @include mobile {
+        font-size: rem(14);
+      }
+    }
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__input,
+  &__checkbox {
+    @include hover(false) {
+      border-color: var(--color-accent);
+    }
+  }
+}

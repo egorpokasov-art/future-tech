@@ -1,0 +1,56 @@
+@use "helpers" as *;
+
+:root {
+  --color-light: #ffffff;
+
+  --color-dark: #141414;
+  --color-dark-10: #1A1A1A;
+  --color-dark-15: #262626;
+  --color-dark-20: #333333;
+  --color-dark-25: #404040;
+  --color-dark-40: #666666;
+
+  --colr-gray-50: #7E7E81;
+  --colr-gray-60: #98989A;
+
+  --color-accent: #FFD11A;
+
+  --color-red: #FF5500;
+
+  --border: #{rem(1)} solid var(--color-dark-15);
+
+  --radius-4: #{rem(4)};
+  --radius-8: #{rem(8)};
+  --radius-10: #{rem(10)};
+  --radius-12: #{rem(12)};
+  --radius-14: #{rem(14)};
+  --radius-100: #{rem(100)};
+
+  --input-height: #{rem(67)};
+
+  --font-family-base: 'Inter', sans-serif;
+  --font-family-accent: 'KambhSans', sans-serif;
+
+  --container-width: #{rem(1600)};
+  --container-padding-x: #{rem(20)};
+
+  --transition-duration: 0.2s;
+
+  --animaionDelay: 0.6s;
+  --animationDuration-s: 0.5s;
+  --animationDuration-m: 0.6s;
+  --animationDuration-l: 1s;
+  --animationDuration-xl: 1.2s;
+
+  --outline: #{rem(2)} dashed var(--color-light);
+  --outline-offset:#{rem(5)};
+
+  @include laptop {
+    --container-width: #{rem(1280)};
+    --input-height: #{rem(53)};
+  }
+
+  @include mobile {
+    --container-padding-x: #{rem(16)};
+  }
+}

@@ -1,0 +1,94 @@
+@use "../helpers" as *;
+
+.advantage-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(30);
+  opacity: 0;
+  transform: translateY(-#{rem(200)});
+  transition-duration: var(--animationDuration-m);
+
+  @include laptop {
+    row-gap: rem(20);
+  }
+
+  @include desktop {
+    row-gap: rem(15);
+  }
+
+  &__image {
+    @include laptop {
+      width: rem(40);
+    }
+  }
+
+  &__link {
+    --circleSize: #{rem(52)};
+    --circleMarginLeft: #{rem(20)};
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: rem(6);
+    padding-right: calc(var(--circleSize) + var(--circleMarginLeft));
+
+    @include hover {
+      color: var(--color-accent);
+
+      &::after {
+        border-color: currentColor;
+        background-color: transparent;
+        background-image: url("../icons/arrow-top-right-icon.svg");
+      }
+
+      .advantage-card__title {
+        color: currentColor;
+      }
+    }
+
+    @include laptop {
+      --circleSize: #{rem(44)};
+      --circleMarginLeft: #{rem(14)};
+
+      row-gap: rem(2);
+    }
+
+    &::after {
+      @include square(var(--circleSize));
+
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 0;
+      translate: 0 -50%;
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background-color: var(--color-accent);
+      background-image: url("../icons/arrow-top-right-icon_dark.svg");
+      background-size: rem(24);
+      background-position: center;
+      background-repeat: no-repeat;
+      transition-duration: var(--transition-duration);
+
+      @include laptop {
+        background-size: rem(20)
+      }
+    }
+  }
+
+  &__subtitle,
+  &__title {
+    transition-duration: var(--transition-duration);
+  }
+
+  &__title {
+    font-weight: 500;
+  }
+
+  &__details {
+    @include fluid-text(20, 14);
+
+    font-family: var(--font-family-accent);
+  }
+}

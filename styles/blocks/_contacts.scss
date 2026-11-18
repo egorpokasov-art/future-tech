@@ -1,0 +1,36 @@
+@use "../helpers" as *;
+
+.contacts {
+  overflow-x: hidden;
+
+  &__list {
+    @include full-vw-centered-line(bottom);
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      row-gap: fluid(50, 20);
+    }
+  }
+
+  &__title {
+    @include fluid-text(20, 16);
+
+    color: var(--color-light);
+  }
+
+  &__links {
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+    row-gap: rem(15);
+
+    @include laptop {
+      row-gap: rem(10);
+    }
+  }
+
+  &__address {
+    font: inherit;
+  }
+}

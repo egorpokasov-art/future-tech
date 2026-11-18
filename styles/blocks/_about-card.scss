@@ -1,0 +1,49 @@
+@use "../helpers" as *;
+
+.about-card {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: fluid(30, 10);
+
+  @include hover {
+    color: inherit;
+    border-color: var(--color-accent);
+
+    .about-card__title::after {
+      border-color: var(--color-accent);
+      background-color: transparent;
+      background-image: url("../icons/arrow-top-right-icon.svg");
+    }
+  }
+
+  &__title {
+    --circleSize: #{fluid(52, 40)};
+    --circleMarginLeft: 1.25rem;
+
+    @include fluid-text(22, 16);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 1rem;
+    color: var(--color-light);
+    font-weight: 600;
+
+    &::after {
+      width: var(--circleSize);
+      height: var(--circleSize);
+      content: "";
+      border: 1px solid transparent;
+      border-radius: 50%;
+      background:
+        url("../icons/arrow-top-right-icon_dark.svg")
+        center /
+        #{fluid(24, 18)}
+        no-repeat
+        var(--color-accent)
+    ;
+      transition-duration: var(--transition-duration);
+    }
+  }
+}

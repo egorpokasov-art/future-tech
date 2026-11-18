@@ -1,0 +1,98 @@
+@use "../helpers" as *;
+
+.about {
+  border-bottom: var(--border);
+  background-color: var(--color-dark-10);
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: fluid(100, 40);
+    padding-block: fluid(120, 40);
+  }
+
+  &__header {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    justify-items: start;
+    column-gap: fluid(80, 20);
+    row-gap: fluid(16, 4);
+
+    @include mobile-above {
+
+      grid-template-areas:
+        'img subtitle'
+        'img title'
+        'img description'
+      ;
+    }
+  }
+  
+  &__icon {
+    --size: #{fluid(150, 60)};
+
+    @include square(var(--size));
+
+    @include mobile-above {
+      grid-area: img;
+    }
+  }
+
+  &__title,
+  &__description {
+    @include mobile {
+      grid-column: -1 / 1;
+    }
+  }
+
+  &__subtitle {
+    @include mobile-above {
+      grid-area: subtitle;
+    }
+  }
+
+  &__title {
+    @include mobile-above {
+      grid-area: title;
+    }
+
+    @include mobile {
+      &:not(:first-child, :last-child) {
+        margin-top: rem(20);
+      }
+    }
+  }
+
+  &__description {
+    &:not(:first-child) {
+      margin-top: fluid(14, 0);
+    }
+  }
+
+  &__list {
+    --listPadding: #{rem(20)};
+
+    display: flex;
+    column-gap: var(--listPadding);
+    border: var(--border);
+    border-radius: var(--radius-12);
+    background-color: var(--color-dark);
+    padding: var(--listPadding);
+
+    @include laptop {
+      --listPadding: #{rem(10)};
+
+      border-radius: var(--radius-10);
+    }
+
+    @include tablet {
+      flex-direction: column;
+      row-gap: var(--listPadding);
+    }
+  }
+
+  &__item {
+    display: flex;
+  }
+}

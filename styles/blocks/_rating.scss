@@ -1,0 +1,36 @@
+@use "../helpers" as *;
+
+.rating-view {
+  display: inline-flex;
+  align-items: center;
+  column-gap: rem(7);
+  border: var(--border);
+  border-radius: var(--radius-100);
+  background-color: var(--color-dark);
+  padding: rem(10) rem(16);
+
+  @include laptop {
+    column-gap: rem(4);
+    padding: rem(8) rem(12);
+  }
+
+  &__star {
+    --starSize: #{rem(24)};
+
+    @include square(var(--starSize));
+
+    background:
+      url("../icons/star_gray.svg")
+      center / var(--starSize)
+      no-repeat
+    ;
+
+    @include laptop {
+      --starSize: #{rem(20)};
+    }
+
+    &.is-active {
+      background-image: url("../icons/star_yellow.svg");
+    }
+  }
+}

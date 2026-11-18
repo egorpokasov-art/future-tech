@@ -1,0 +1,38 @@
+@use "../helpers" as *;
+
+.list {
+  overflow: hidden;
+
+  &,
+  &__item {
+    &:not(:last-child) {
+      border-bottom: var(--border);
+    }
+  }
+
+  &__item {
+    overflow: hidden;
+
+    &:nth-child(even) {
+      .list__item-wrapper:not(.is-animated) {
+        opacity: 0;
+        transform: translateX(-50vw);
+      }
+    }
+
+    &:nth-child(odd) {
+      .list__item-wrapper:not(.is-animated) {
+        opacity: 0;
+        transform: translateX(50vw);
+      }
+    }
+
+    &-wrapper {
+      transition-duration: var(--animationDuration-l);
+
+      @include mobile {
+        transition-duration: var(--animationDuration-s);
+      }
+    }
+  }
+}

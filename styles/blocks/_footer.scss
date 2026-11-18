@@ -1,0 +1,104 @@
+@use "../helpers" as *;
+
+.footer {
+  overflow-x: hidden;
+  color: var(--color-dark-40);
+  background-color: var(--color-dark);
+
+  &__body {
+    @include full-vw-centered-line(bottom);
+
+    padding-block: fluid(80, 40);
+  }
+
+  &__menu {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-items: start;
+    justify-content: space-between;
+    column-gap: rem(40);
+
+    @include tablet {
+      grid-template-columns: repeat(2, auto);
+      justify-content: center;
+      column-gap: 20%;
+      row-gap: rem(40);
+    }
+
+    @include mobile {
+      gap: rem(20);
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      row-gap: fluid(28, 16);
+
+      &:last-child {
+        @include tablet {
+          grid-column: -1 / 1;
+
+          .footer__menu-list {
+            flex-wrap: wrap;
+            flex-direction: row;
+            gap: rem(12);
+          }
+        }
+      }
+    }
+
+    &-main-link {
+      @include fluid-text(20, 16);
+
+      font-weight: 500;
+      color: var(--color-light);
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      row-gap: fluid(18, 8);
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      column-gap: rem(12);
+    }
+  }
+
+  &__extra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    column-gap: 2rem;
+    padding-block: rem(40);
+
+    @include laptop {
+      padding-block: rem(24);
+    }
+
+    @include mobile {
+      flex-direction: column;
+      align-items: center;
+      row-gap: rem(20);
+    }
+
+    &-menu {
+      &-list {
+        display: flex;
+      }
+
+      &-item:not(:last-child)::after {
+        margin-inline : rem(11);
+        content: '|';
+      }
+    }
+  }
+
+  &__soc1als {
+    @include mobile {
+      order: -1;
+    }
+  }
+}
